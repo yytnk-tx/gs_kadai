@@ -45,8 +45,7 @@ function getJankenResult() {
         case playerHand === Hands.PAPER && cpuHand === Hands.ROCK:
         case playerHand === Hands.SCISSORS && cpuHand === Hands.PAPER:
             jankenWinner = PARTICIPANTS.PLAYER;
-            // setWinnersNumberOfSteps();
-            stepsCount = 1000;
+            setWinnersNumberOfSteps();
             jankenCount++;
             break;
         case playerHand === Hands.ROCK && cpuHand === Hands.ROCK:
