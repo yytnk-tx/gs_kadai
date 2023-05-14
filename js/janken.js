@@ -1,10 +1,10 @@
 function changeHandsText() {
-    $(".game-panel-janken-player-rock").css("border","5px solid white");
-    $(".game-panel-janken-player-paper").css("border","5px solid white");
-    $(".game-panel-janken-player-scissors").css("border","5px solid white");
-    $(".game-panel-janken-cpu-rock").css("border","5px solid white");
-    $(".game-panel-janken-cpu-paper").css("border","5px solid white");
-    $(".game-panel-janken-cpu-scissors").css("border","5px solid white");
+    $(".game-panel-janken-player-rock").css("border","5px solid var(--main-background-color)");
+    $(".game-panel-janken-player-paper").css("border","5px solid var(--main-background-color)");
+    $(".game-panel-janken-player-scissors").css("border","5px solid whvar(--main-background-color)ite");
+    $(".game-panel-janken-cpu-rock").css("border","5px solid var(--main-background-color)");
+    $(".game-panel-janken-cpu-paper").css("border","5px solid var(--main-background-color)");
+    $(".game-panel-janken-cpu-scissors").css("border","5px solid var(--main-background-color)");
 
     switch (playerHand) {
         case Hands.ROCK:

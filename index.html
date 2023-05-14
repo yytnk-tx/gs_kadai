@@ -7,12 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+
     <title>じゃんけん迷路</title>
 </head>
 
 <body>
+    <div id="stars1"></div>
+    <div id="stars2"></div>
+
     <header>
-        <img src="./img/logo.png" alt="">
+        じゃんけん迷路
     </header>
 
     <main>
@@ -49,7 +57,7 @@
                     <h2>じゃんけん</h2>
                     <div class="game-panel-padding">
                         <h3>あなたの手</h3>
-                        <div  class="game-panel-padding">
+                        <div class="game-panel-padding">
                             <input type="image" src="./img/janken_rock.png" alt="じゃんけんのグーの画像"
                                 class="game-panel-janken-player-rock janken-img">
                             <input type="image" src="./img/janken_paper.png" alt="じゃんけんのパーの画像"
@@ -61,7 +69,7 @@
 
                     <div class="game-panel-padding">
                         <h3>相手の手</h3>
-                        <div  class="game-panel-padding">
+                        <div class="game-panel-padding">
                             <input type="image" src="./img/janken_rock.png" alt="じゃんけんのグーの画像"
                                 class="game-panel-janken-cpu-rock janken-img">
                             <input type="image" src="./img/janken_paper.png" alt="じゃんけんのパーの画像"
@@ -78,7 +86,7 @@
                                 <p class="steps-count">0</p>
                             </div>
                         </div>
-    
+
                         <div class="game-panel-padding">
                             <h3>じゃんけん数</h3>
                             <div class="game-panel-padding">
@@ -123,6 +131,7 @@
     <script src="./js/game.js"></script>
     <script>
         window.onload = function () {
+            initBackground();
             initMaze();
             initOdds();
         }
