@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
 
+    <link rel="icon" href="./img/dot_illust_kaseijin_red.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
 
-    <title>じゃんけん迷路</title>
+    <title>Cosmic Treasure Hunter</title>
 </head>
 
 <body>
@@ -20,20 +22,40 @@
     <div id="stars2"></div>
 
     <header>
-        じゃんけん迷路
+        Cosmic Treasure Hunter
     </header>
 
     <main>
         <div id="screen">
             <div id="screen-main">
-                <h1>メイン迷路</h1>
+                <h1>Treasure Map</h1>                
                 <div class="game-panel-padding">
+                    <div class="game-panel-padding">
+                        <h2>じゃんけんに勝って、お宝を集めつつゴールを目指そう！</h2>
+                    </div>
                     <div id="maze"></div>
+                </div>
+
+                <div id="usage-guide-panel" class="game-panel-padding">
+                    <div class="usage-guide-content">
+                        <img src="./img/dot_illust_kaseijin_red.png" alt="火星人の画像" class="usage-guide-img">
+                        <span>：You</span>
+                    </div>
+
+                    <div class="usage-guide-content">
+                        <img src="./img/dot_illust_treasure_bronze.png" alt="宝箱の画像" class="usage-guide-img">
+                        <span>：Treasure</span>
+                    </div>
+
+                    <div class="usage-guide-content">
+                        <img src="./img/dot_illust_object_jupiter.png" alt="惑星の画像" class="usage-guide-img">
+                        <span>：Goal</span>
+                    </div>
                 </div>
             </div>
 
             <div id="screen-secondary">
-                <h1>操作パネル</h1>
+                <h1>Information</h1>
                 <div class="game-panel-padding">
                     <h2>オッズ</h2>
                     <div class="game-panel-padding">
@@ -95,7 +117,18 @@
                         </div>
                     </div>
 
-                    <h2>移動</h2>
+                    <h2>集めたお宝</h2>
+                    <div class="game-panel-padding">
+                        <table class="game-panel-treasure-table">
+                            <tr>
+                                <td><img src="./img/dot_illust_treasure_bronze.png" alt="宝箱の画像"
+                                        class="game-panel-treasure"></td>
+                                <td class="treasure-count">0</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- <h2>移動</h2>
                     <div class="game-panel-padding">
                         <table>
                             <tr>
@@ -114,7 +147,7 @@
                                 <td></td>
                             </tr>
                         </table>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

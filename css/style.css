@@ -8,7 +8,7 @@ html {
     background: var(--main-background-color);
     color: var(--main-text-color);
     font-family: 'Zen Kaku Gothic New', sans-serif;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 header {
@@ -106,20 +106,39 @@ h2 {
 /* .path {} */
 
 .player {
-    background-image: url("../img/player.png");
+    background-image: url("../img/dot_illust_kaseijin_red.png");
+    /* background-image: url("../img/dot_illust_treasure_bronze.png"); */
     background-size: cover;
 }
 
 .goal {
-    background-color: pink;
+    background-image: url("../img/dot_illust_object_jupiter.png");
+    background-size: cover;
+}
+
+.treasure {
+    background-image: url("../img/dot_illust_treasure_bronze.png");
+    background-size: cover;
+}
+
+#usage-guide-panel {
+    display: flex;
+}
+
+.usage-guide-content {
+    margin: 10px;
+}
+
+.usage-guide-img {
+    height: 30px;
+    width: 30px;
 }
 
 .game-panel-padding {
     padding: 10px;
 }
 
-.game-panel-odds-table td,
-th {
+.game-panel-odds-table td, th {
     border: 1px solid #ccc;
     padding: 3px;
     width: 60px;
@@ -138,6 +157,22 @@ th {
 
 .game-panel-count {
     display: flex;
+}
+
+.game-panel-treasure {
+    height: 40px;
+    width: 40px;
+}
+
+.game-panel-treasure-table td {
+    padding: 3px;
+    width: 60px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.treasure-count::after{
+    content: " 個";
 }
 
 #footer {

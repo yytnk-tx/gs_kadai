@@ -92,6 +92,9 @@ function showMaze() {
                 case GOAL:
                     snipet += '<div class="goal"></div>';
                     break;
+                case TREASURE:
+                    snipet += '<div class="treasure"></div>';
+                    break;
             }
         }
     }
@@ -124,6 +127,15 @@ function setStartPositionOfMaze() {
     mazeGOALPosition.height = h;
     mazeGOALPosition.width = w;
     maze[h][w] = GOAL;
+
+    for (let i = 0; i < mazeTreasureCount; i++) {
+        do {
+            h = getRandomNumber(0, mazeHeight);
+            w = getRandomNumber(0, mazeWidth);
+        } while (maze[h][w] != PATH);
+
+        maze[h][w] = TREASURE;
+    }
 }
 
 function moveMaze(moveDirection) {
@@ -148,32 +160,28 @@ function moveMaze(moveDirection) {
         switch (moveDirection) {
             case DIRECTION.UP:
                 if (mazePosition.height - 1 >= 0 && mazePosition.height - 1 < mazeHeight) {
-                    if (maze[mazePosition.height - 1][mazePosition.width] === PATH ||
-                        maze[mazePosition.height - 1][mazePosition.width] === GOAL) {
+                    if (maze[mazePosition.height - 1][mazePosition.width] !== WALL) {
                         mazePosition.height = mazePosition.height - 1;
                     }
                 }
                 break;
             case DIRECTION.DOWN:
                 if (mazePosition.height + 1 >= 0 && mazePosition.height + 1 < mazeHeight) {
-                    if (maze[mazePosition.height + 1][mazePosition.width] === PATH ||
-                        maze[mazePosition.height + 1][mazePosition.width] === GOAL) {
+                    if (maze[mazePosition.height + 1][mazePosition.width] !== WALL) {
                         mazePosition.height = mazePosition.height + 1;
                     }
                 }
                 break;
             case DIRECTION.LEFT:
                 if (mazePosition.width - 1 >= 0 && mazePosition.width - 1 < mazeWidth) {
-                    if (maze[mazePosition.height][mazePosition.width - 1] === PATH ||
-                        maze[mazePosition.height][mazePosition.width - 1] === GOAL) {
+                    if (maze[mazePosition.height][mazePosition.width - 1] !== WALL) {
                         mazePosition.width = mazePosition.width - 1;
                     }
                 }
                 break;
             case DIRECTION.RIGHT:
                 if (mazePosition.width + 1 >= 0 && mazePosition.width + 1 < mazeWidth) {
-                    if (maze[mazePosition.height][mazePosition.width + 1] === PATH ||
-                        maze[mazePosition.height][mazePosition.width + 1] === GOAL) {
+                    if (maze[mazePosition.height][mazePosition.width + 1] !== WALL) {
                         mazePosition.width = mazePosition.width + 1;
                     }
                 }
@@ -185,13 +193,19 @@ function moveMaze(moveDirection) {
             stepsCount--;
             changeStepsCountText();
 
+            if (maze[mazePosition.height][mazePosition.width] === TREASURE) {
+                treasureCount++;
+                changeTreasureCountText();
+            }
+
             maze[mazeCurrentPosition.height][mazeCurrentPosition.width] = PATH;
             maze[mazePosition.height][mazePosition.width] = mazeMoveParticipants;
             showMaze();
 
             if (mazePlayerPosition.height === mazeGOALPosition.height &&
                 mazePlayerPosition.width === mazeGOALPosition.width) {
-                alert("おめでとう！ゴールしました！\nゴールまでのじゃんけん回数は " + jankenCount + "回 でした！\nまた遊んでね！");
+                alert("おめでとう！ゴールしました！\nゴールまでのじゃんけん回数は " + jankenCount + "回 でした！\n" +
+                    "集めたお宝の数は" + treasureCount + "個でした！\nまた遊んでね！");
             }
         }
     }

@@ -39,13 +39,18 @@ function changeJankenCountText() {
     $(".janken-count").text(jankenCount);
 }
 
+function changeTreasureCountText() {
+    $(".treasure-count").text(treasureCount);
+}
+
 function getJankenResult() {
     switch (true) {
         case playerHand === Hands.ROCK && cpuHand === Hands.SCISSORS:
         case playerHand === Hands.PAPER && cpuHand === Hands.ROCK:
         case playerHand === Hands.SCISSORS && cpuHand === Hands.PAPER:
             jankenWinner = PARTICIPANTS.PLAYER;
-            setWinnersNumberOfSteps();
+            // setWinnersNumberOfSteps();
+            stepsCount = 1000;
             jankenCount++;
             break;
         case playerHand === Hands.ROCK && cpuHand === Hands.ROCK:

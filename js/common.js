@@ -1,5 +1,3 @@
-const numberOfStars = 300;
-
 // じゃんけんの手
 const Hands = {
     ROCK: 1,
@@ -18,11 +16,15 @@ const PARTICIPANTS = {
 const mazeHeight = 15;
 const mazeWidth = 29;
 
+// 宝箱の数
+const mazeTreasureCount = 10;
+
 // 迷路定義
 const PATH = 0;
 const WALL = 1;
 const PLAYER = 2;
 const GOAL = 3;
+const TREASURE = 4;
 
 // 方向定義
 const DIRECTION = {
@@ -64,6 +66,9 @@ var stepsCount = 0;
 
 // じゃんけん数
 var jankenCount = 0;
+
+// 宝箱取得集
+var treasureCount = 0;
 
 // 乱数を取得する（min～max）
 function getRandomNumber(min, max) {
