@@ -5,22 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>手順書作成支援ツール</title>
 
     <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <link rel="stylesheet" href="./css/top.css">
+
+    <link rel="icon" href="./img/dot_illust_kaseijin_red.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+
+    <title>Cosmic Treasure Hunter</title>
 </head>
 
 <body>
+    <div id="stars1"></div>
+    <div id="stars2"></div>
+
     <header id="header">
-        <h1>手順書作成支援ツール</h1>
+        Cosmic Treasure Hunter
     </header>
 
     <main>
         <section id="center">
-            <div class="manual-command">
-                <input type="text">
-                <button class="add-button">+</button>
+            <div class="btn-border-gradient-wrap btn-border-gradient-wrap--silver">
+                <a id="begin-button" href="./html/maze.html" class="btn btn-border-gradient"><div class="btn-text-gradient--silver">はじめから</div></a>
+            </div>
+
+            <div class="btn-border-gradient-wrap btn-border-gradient-wrap--silver">
+                <a id="continue-button" href="./html/maze.html" class="btn btn-border-gradient"><div class="btn-text-gradient--silver">つづきから</div></a>
             </div>
         </section>
     </main>
@@ -30,7 +44,7 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/top.js"></script>
 </body>
 
 </html>
