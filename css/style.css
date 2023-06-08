@@ -1,0 +1,94 @@
+html {
+    background: #516C9D;
+    /* background: #516C9D; */
+    color: #DEDEDE;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+/* ヘッダー部 */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh;
+    padding: 10px;
+}
+
+#header-logo {
+    font-size: 32px;
+}
+
+/* メイン全体 */
+#main-wrapper {
+    display: flex;
+}
+
+/* メインナビゲーション */
+#main-channels-nav {
+    width: 300px;
+    padding: 10px;
+}
+
+#main-channels-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#main-channels-nav-title {
+    font-size: 24px;
+}
+
+#main-channels-nav-rooms-add-button {
+
+}
+
+.main-channels-nav-rooms-content {
+    margin: 5px;
+}
+
+input[name="room"] {
+    display: none;
+}
+
+input[name="room"]:checked ~ label {
+    font-size: 18px;
+    font-weight:bold;
+}
+
+/* メインチャット */
+#main-chat {
+    height: 90vh;
+    width: calc(100vw - 300px);
+}
+
+#main-chat-conversation {
+    height: 90%;
+    overflow: auto;
+}
+
+#main-chat-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 10%;
+}
+
+#main-chat-send-message {
+    width: 90%;
+}
+
+.chat-message {
+    margin: 10px;
+    max-width: 100%;
+}
+
+.chat-message-send {
+    font-weight: bold;
+}
+
+.chat-message-receive {
+
+}
+
