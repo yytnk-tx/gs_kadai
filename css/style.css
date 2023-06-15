@@ -1,0 +1,154 @@
+html {
+    background: #E6E7E3;
+    /* background: #516C9D; */
+    color: #282631;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+/* ヘッダー部 */
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+#header-logo {
+    font-size: 32px;
+}
+
+.header-input {
+    margin-right: 20px;
+}
+
+#username {
+    padding: 5px 20px;
+    border: 1px solid #282631;
+    border-radius: 25px;
+}
+
+/* メイン全体 */
+#main-wrapper {
+    display: flex;
+}
+
+/* メインナビゲーション */
+#main-channels-nav {
+    width: 300px;
+    padding: 10px;
+}
+
+#main-channels-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#main-channels-nav-title {
+    font-size: 24px;
+}
+
+#main-channels-nav-rooms-add-button {
+    width: 25px;
+}
+
+#main-channels-nav-rooms-add-room {
+    display: flex;
+    justify-content: space-between;
+}
+
+#main-channels-nav-rooms-add-room-name {
+    width: 250px;
+    padding: 2px 10px;
+    border: 1px solid #282631;
+    border-radius: 25px;
+}
+
+.main-channels-nav-rooms-add-button {
+    width: 20px;
+}
+
+.main-channels-nav-rooms-del-button {
+    width: 20px;
+}
+
+.main-channels-nav-rooms-content {
+    margin: 5px;
+}
+
+input[name="room"] {
+    display: none;
+}
+
+input[name="room"]:checked {
+    background-color: lightblue;
+}
+
+input[name="room"]:checked ~ label {
+    font-size: 18px;
+    font-weight:bold;
+}
+
+/* メインチャット */
+#main-chat {
+    height: calc(100vh - 50px - 20px);
+    width: calc(100vw - 300px);
+}
+
+#main-chat-conversation {
+    height: calc(100% - 100px);
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+#main-chat-input {
+    display: flex;
+    align-items: flex-end;
+    height: 100px;
+    width: 100%;
+}
+
+#main-chat-send-message {
+    resize: none;
+    overflow: auto;
+    width: 90%;
+    height: 60%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 15px 15px;
+    border: 1px solid #282631;
+    border-radius: 25px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+#main-chat-input-send-button {
+    width: 25px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.chat-message {
+    margin: 10px;
+    max-width: 100%;
+}
+
+.chat-message-strong-positive {
+    color: #0033ff;
+}
+
+.chat-message-weak-positive {
+    color: #7184d0;
+}
+
+.chat-message-strong-negative {
+    color: #ff0080;
+}
+
+.chat-message-weak-negative {
+    color: #ed82b8;
+}
+
+.chat-message-neutral {
+    color: #282631;
+}

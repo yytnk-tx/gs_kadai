@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatABC</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header id="header">
+        <div>
+            <h1 id="header-logo">ChatABC</h1>
+        </div>
+
+        <div>
+            <div class="header-input">
+                <input type="text" name="username" id="username" placeholder="type your name...">
+                <span class="focus-line"></span>
+            </div>
+        </div>
+    </header>
+
+    <div id="main-wrapper">
+        <aside id="main-channels-nav">
+            <div id="main-channels-nav-header">
+                <h2 id="main-channels-nav-title">Chat Rooms</h2>
+                <input type="image" id="main-channels-nav-rooms-add-button" src="./img/add_box.png" alt="">
+            </div>
+            <ul id="main-channels-nav-rooms">
+                <!-- Firebase上に登録されているRoom情報が追加 -->
+            </ul>
+        </aside>
+
+        <main id="main-chat">
+            <div id="main-chat-conversation">
+                <!-- Firebase上に登録されているChat情報が追加 -->
+            </div>
+
+            <div id="main-chat-input">
+                <textarea name="" id="main-chat-send-message" placeholder="type your message..."></textarea>
+                <input type="image" id="main-chat-input-send-button" src="./img/send.png">
+            </div>
+        </main>
+    </div>
+
+    <footer>
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/chat.js"></script>
+    <script type="module" src="./js/firebase.js"></script>
+    <script src="./js/gcp.js"></script>
+</body>
+
+</html>
