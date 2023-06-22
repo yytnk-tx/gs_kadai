@@ -1,0 +1,46 @@
+h1 {
+  font-size: 24px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+main {
+  margin: 0 auto;
+  text-align: center;
+}
+main table {
+  margin: 0 auto;
+}
+main table th {
+  font-weight: bold;
+  padding: 3px;
+}
+main table td {
+  text-align: left;
+  width: 200px;
+  padding: 3px;
+}
+main table td input {
+  width: 100%;
+  height: 20px;
+  text-align: right;
+}
+main table td input:-moz-read-only {
+  border: 0;
+}
+main table td input:read-only {
+  border: 0;
+}
+main form {
+  text-align: center;
+}
+main form button {
+  margin: 20px;
+  width: 100px;
+}
+main ul {
+  margin-top: 60px;
+}
+main ul li {
+  margin-top: 10px;
+}/*# sourceMappingURL=style.css.map */
