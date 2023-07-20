@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2023-07-11 17:02:15
+-- 生成日時: 2023-07-20 18:54:28
 -- サーバのバージョン： 10.4.28-MariaDB
 -- PHP のバージョン: 8.2.4
 
@@ -39,13 +39,17 @@ CREATE TABLE `daily_reports` (
 --
 
 INSERT INTO `daily_reports` (`tenant_id`, `user_id`, `date`, `report_content`) VALUES
+('0000000', 1, '2023-07-06', 'fjdsal;fuieaw\r\n\r\n\r\nfewafdadfa\r\n\r\n\r\ndfsa'),
 ('0000000', 1, '2023-07-07', '                                                            '),
+('0000000', 1, '2023-07-21', 'fdas'),
+('0000000', 1, '2023-08-21', 'fdsafasdfdasfdas'),
 ('0000001', 4, '2023-07-18', 'test'),
-('0000001', 4, '2023-07-27', 'test'),
+('0000001', 4, '2023-07-27', 'bbbb'),
 ('0000003', 14, '2023-07-07', 'test'),
 ('0000003', 15, '2023-07-07', 'test'),
-('0000003', 15, '2023-07-08', 'testtest'),
-('0000003', 15, '2023-07-20', 'test');
+('0000003', 15, '2023-07-08', 'This is Test'),
+('0000003', 15, '2023-07-20', 'test'),
+('0000007', 22, '2023-07-07', '2023/07/21の日報です。');
 
 -- --------------------------------------------------------
 
@@ -136,7 +140,9 @@ INSERT INTO `tenants` (`tenant_id`, `tenant_name`) VALUES
 ('0000000', 'システム運営会社'),
 ('0000001', 'ユーザ会社１'),
 ('0000002', 'ユーザ会社２'),
-('0000003', 'ユーザ会社３');
+('0000005', 'test'),
+('0000006', 'testtest'),
+('0000007', 'TEST COMPANY XYZ');
 
 -- --------------------------------------------------------
 
@@ -166,7 +172,10 @@ INSERT INTO `users` (`user_id`, `user_name`, `password`, `role`, `user_tenant`) 
 (13, 'xxxx', '$2y$10$CuQWtM3pxab.VDnG1eBiBuuwhN6KO4wAcmunJa0e7EdMav52SGmei', 2, '0000001'),
 (14, 'tenant3_admin_user1', '$2y$10$miU.PWk98C1KQ1XEYXr6.egKcd4Tuc4Snz1z/NHJCvuQRrqOU/ThG', 2, '0000003'),
 (15, 'tenant3_general_user1', '$2y$10$DrzNBn.Aj.chqWmc/Kzhqu2xO/qTCgVkPj4w6cxGU8cGDhIkzdPq2', 3, '0000003'),
-(16, 'tenant3_admin_user2', '$2y$10$joR1bUJAY0APbqfvZANTVOhrpgWePl8GEx.nVxFywGh9Rvk.KB5YS', 2, '0000003');
+(16, 'tenant3_admin_user2', '$2y$10$joR1bUJAY0APbqfvZANTVOhrpgWePl8GEx.nVxFywGh9Rvk.KB5YS', 2, '0000003'),
+(22, 'xxxx', '$2y$10$YEb6fwrpzIcOeqXgJo3KYuoTCwOOgGGSwD/DXN1q39cLeZTHAhq8m', 2, '0000007'),
+(23, 'aaaa', '$2y$10$bpTk744xU0CQlEdK.H5NEudYnF7GvIbwHYP9GzbCqmYIKRta.L9du', 3, '0000007'),
+(25, 'bbbb', '$2y$10$94ldMRRLr9sIbKTkvdf2cO4hho663mYWO3yAUMK1UQ0cn.rR22t7.', 3, '0000007');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -228,7 +237,7 @@ ALTER TABLE `roles`
 -- テーブルの AUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
