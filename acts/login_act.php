@@ -10,10 +10,10 @@
 
     // バリデーションチェック（ユーザ名）
     if(empty($userName)) {
-        $_SESSION['flash']['userName'] = 'ユーザ名は必須項目です。';
+        $_SESSION['flash']['userName'] = 'Username must not be blank.';
         $validationFlg = true;
     } else if(mb_strlen($userName) > 50) {
-        $_SESSION['flash']['userName'] = 'ユーザ名の入力内容が不正です。';
+        $_SESSION['flash']['userName'] = 'Requested username is invalid. Please specify within 50 characters.';
         $validationFlg = true;
     } else {
         $_SESSION['original']['userName'] = $userName;
@@ -21,10 +21,10 @@
 
     // バリデーションチェック（パスワード）
     if(empty($password)) {
-        $_SESSION['flash']['password'] = 'パスワードは必須項目です。';
+        $_SESSION['flash']['password'] = 'Password must not be blank.';
         $validationFlg = true;
     } else if(mb_strlen($password) > 50) {
-        $_SESSION['flash']['password'] = 'パスワードの入力内容が不正です。';
+        $_SESSION['flash']['password'] = 'Requested password is invalid. Please specify within 50 characters.';
         $validationFlg = true;
     } else {
         $_SESSION['original']['password'] = $password;
@@ -32,13 +32,16 @@
 
     // バリデーションNG時のリダイレクト
     if($validationFlg) {
-        redirect('http://localhost/gs_code/gs_kadai10/login.php');
+        redirect('http://localhost/gs_code/gs_kadai10/index.php');
     }
 
     // ログイン処理
     $pdo = db_conn();
 
-    $stmt = $pdo->prepare("SELECT user_id, user_name, password, role, user_tenant FROM users WHERE user_name = :userName");
+    $stmt = $pdo->prepare("SELECT users.user_id, users.user_name, users.password,
+        users.role, roles.role_name, users.user_tenant, tenants.tenant_name FROM users
+        JOIN roles ON users.role = roles.role_id JOIN tenants ON users.user_tenant = tenants.tenant_id
+        WHERE user_name = :userName");
     $stmt->bindValue(':userName', $userName, PDO::PARAM_STR);
     $status = $stmt->execute();
 
@@ -53,13 +56,15 @@
         $_SESSION['userId'] = $result['user_id'];
         $_SESSION['userName'] = $result['user_name'];
         $_SESSION['tenantId'] = $result['user_tenant'];
+        $_SESSION['tenantName'] = $result['tenant_name'];
         $_SESSION['role'] = $result['role'];
+        $_SESSION['roleName'] = $result['role_name'];
 
         redirect('http://localhost/gs_code/gs_kadai10/menu.php');
     } else {
-        $_SESSION['flash']['error'] = 'ユーザ名またはパスワードの内容が誤っています。';
+        $_SESSION['flash']['error'] = 'Requested username or password is invalid';
 
-        redirect('http://localhost/gs_code/gs_kadai10/login.php');
+        redirect('http://localhost/gs_code/gs_kadai10/index.php');
     }
 
     exit();

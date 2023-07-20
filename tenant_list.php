@@ -12,5 +12,9 @@
   
     $pdo = db_conn();
     $view = get_all_tenants($pdo);
+
+    $userName = $_SESSION['userName'];
+    $roleName = $_SESSION['roleName'];
+    $navView = getNavigationMenu('TenantManagement', 'TenantList');
   
     require_once('./templates/tenant_list.php');

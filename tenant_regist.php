@@ -11,4 +11,8 @@
     $flash = getFlashMessage();
     $original = getOriginalMessage();
 
+    $userName = $_SESSION['userName'];
+    $roleName = $_SESSION['roleName'];
+    $navView = getNavigationMenu('TenantManagement', 'TenantRegist');
+
     require_once('./templates/tenant_regist.php');

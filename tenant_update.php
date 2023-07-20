@@ -14,4 +14,8 @@
     $tenantId = !empty($_POST['tenantId']) ? $_POST['tenantId'] : (!empty($original['tenantId']) ? $original['tenantId'] : "");
     $tenantName = !empty($_POST['tenantName']) ? $_POST['tenantName'] : (!empty($original['tenantName']) ? $original['tenantName'] : "");
 
+    $userName = $_SESSION['userName'];
+    $roleName = $_SESSION['roleName'];
+    $navView = getNavigationMenu('TenantManagement', 'TenantUpdate');
+
     require_once('./templates/tenant_update.php');

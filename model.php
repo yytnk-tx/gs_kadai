@@ -60,11 +60,135 @@
         return false;
     }
 
-    function isGeneralUser() {
+    function isUserGeneral() {
     if($_SESSION['role'] === 3) {
             return true;
         }
         return false;
+    }
+
+    function getNavigationMenu($menuGroup, $menuContent) {
+        $navView = '';
+
+        if($menuGroup === 'Dashboard') {
+            $navView .= '<li class="menu-item active">';
+        } else {
+            $navView .= '<li class="menu-item">';
+        }
+        $navView .= '<a href="http://localhost/gs_code/gs_kadai10/menu.php" class="menu-link">';
+        $navView .= '<i class="menu-icon tf-icons bx bx-home-circle"></i>';
+        $navView .= '<div data-i18n="Analytics">Dashboard</div>';
+        $navView .= '</a>';
+        $navView .= '</li>';
+
+        if(isSystemAdministrator() || isUserAdministrator() || isUserGeneral()) {
+            $navView .= '<li class="menu-header small text-uppercase">';
+            $navView .= '<span class="menu-header-text">Sales Management</span>';
+            $navView .= '</li>';
+            if($menuGroup === 'SalesManagement') {
+                $navView .= '<li class="menu-item active open">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="javascript:void(0);" class="menu-link menu-toggle">';
+            $navView .= '<i class="menu-icon tf-icons bx bx-notepad"></i>';
+            $navView .= '<div data-i18n="Account Settings">Daily Reports</div>';
+            $navView .= '</a>';
+            $navView .= '<ul class="menu-sub">';
+            if($menuContent === 'ReportRegist') {
+                $navView .= '<li class="menu-item active">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="http://localhost/gs_code/gs_kadai10/report_regist.php" class="menu-link">';
+            $navView .= '<div data-i18n="Account">Write</div>';
+            $navView .= '</a>';
+            $navView .= '</li>';
+            if($menuContent === 'ReportList') {
+                $navView .= '<li class="menu-item active">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="http://localhost/gs_code/gs_kadai10/report_list.php" class="menu-link">';
+            $navView .= '<div data-i18n="Notifications">Reference</div>';
+            $navView .= '</a>';
+            $navView .= '</li>';
+            $navView .= '</ul>';
+            $navView .= '</li>';
+        }
+
+        if(isSystemAdministrator() || isUserAdministrator()) {
+            $navView .= '<li class="menu-header small text-uppercase">';
+            $navView .= '<span class="menu-header-text">User Management</span>';
+            $navView .= '</li>';
+            if($menuGroup === 'UserManagement') {
+                $navView .= '<li class="menu-item active open">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="javascript:void(0)" class="menu-link menu-toggle">';
+            $navView .= '<i class="menu-icon tf-icons bx bx-user-circle"></i>';
+            $navView .= '<div data-i18n="User interface">Users</div>';
+            $navView .= '</a>';
+            $navView .= '<ul class="menu-sub">';
+            if($menuContent === 'UserRegist') {
+                $navView .= '<li class="menu-item active">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="http://localhost/gs_code/gs_kadai10/user_regist.php" class="menu-link">';
+            $navView .= '<div data-i18n="Accordion">Regist</div>';
+            $navView .= '</a>';
+            $navView .= '</li>';
+            if($menuContent === 'UserList') {
+                $navView .= '<li class="menu-item active">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="http://localhost/gs_code/gs_kadai10/user_list.php" class="menu-link">';
+            $navView .= '<div data-i18n="Alerts">Reference</div>';
+            $navView .= '</a>';
+            $navView .= '</li>';
+            $navView .= '</ul>';
+            $navView .= '</li>';
+        }
+
+        if(isSystemAdministrator()) {
+            $navView .= '<li class="menu-header small text-uppercase"><span class="menu-header-text">Tenant Management</span>';
+            $navView .= '</li>';
+            if($menuGroup === 'TenantManagement') {
+                $navView .= '<li class="menu-item active open">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="javascript:void(0);" class="menu-link menu-toggle">';
+            $navView .= '<i class="menu-icon tf-icons bx bx-buildings"></i>';
+            $navView .= '<div data-i18n="Form Elements">Tenants</div>';
+            $navView .= '</a>';
+            $navView .= '<ul class="menu-sub">';
+            if($menuContent === 'TenantRegist') {
+                $navView .= '<li class="menu-item active">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="http://localhost/gs_code/gs_kadai10/tenant_regist.php" class="menu-link">';
+            $navView .= '<div data-i18n="Basic Inputs">Regist</div>';
+            $navView .= '</a>';
+            $navView .= '</li>';
+            if($menuContent === 'TenantList') {
+                $navView .= '<li class="menu-item active">';
+            } else {
+                $navView .= '<li class="menu-item">';
+            }
+            $navView .= '<a href="http://localhost/gs_code/gs_kadai10/tenant_list.php" class="menu-link">';
+            $navView .= '<div data-i18n="Basic Inputs">Refenrece</div>';
+            $navView .= '</a>';
+            $navView .= '</li>';
+            $navView .= '</ul>';
+            $navView .= '</li>';
+        }
+
+        return $navView;
     }
 
     function db_conn() {
@@ -94,7 +218,7 @@
                 JOIN roles ON users.role = roles.role_id
                 JOIN tenants ON users.user_tenant = tenants.tenant_id
                 WHERE users.user_tenant = :tenantID");
-            $stmt->bindValue(':tenantID', $tenantId, PDO::PARAM_STR);
+            $stmt->bindValue(':tenantID', $_SESSION['tenantId'], PDO::PARAM_STR);
         }
     
         $status = $stmt->execute();
@@ -111,18 +235,30 @@
                 $view .= "<td>" . h($result['role_name']) . "</td>";
                 $view .= "<td>" . h($result['tenant_name']) . "</td>";
 
-                $view .= "<td><form action='http://localhost/gs_code/gs_kadai10/user_update.php' method='post'>";
-                $view .= "<input type='hidden' name='userId' id='userId' value=" . h($result['user_id']) . ">";
-                $view .= "<input type='hidden' name='userName' id='userName' value=" . h($result['user_name']) . ">";
-                $view .= "<input type='hidden' name='roleId' id='roleId' value=" . h($result['role_id']) . ">";
-                $view .= "<input type='hidden' name='tenantId' id='tenantId' value=" . h($result['tenant_id']) . ">";
-                $view .= "<button type='submit' class='btn btn-warning'>更新</button>";
-                $view .= "</form></td>";
+                $view .= "<td>";
+                $view .= "<div class='dropdown'>";
+                $view .= "<button type='button' class='btn p-0 dropdown-toggle hide-arrow'";
+                $view .= "data-bs-toggle='dropdown'>";
+                $view .= "<i class='bx bx-dots-vertical-rounded'></i>";
+                $view .= "</button>";
 
-                $view .= "<td><form action='http://localhost/gs_code/gs_kadai10/acts/user_delete_act.php' method='post'>";
+                $view .= "<div class='dropdown-menu'>";
+
+                $view .= "<form action='http://localhost/gs_code/gs_kadai10/user_update.php' method='post'>";
+                $view .= "<input type='hidden' name='userId' id='userId' value='" . h($result['user_id']) . "'>";
+                $view .= "<input type='hidden' name='userName' id='userName' value='" . h($result['user_name']) . "'>";
+                $view .= "<input type='hidden' name='roleId' id='roleId' value='" . h($result['role_id']) . "'>";
+                $view .= "<input type='hidden' name='tenantId' id='tenantId' value='" . h($result['tenant_id']) . "'>";
+                $view .= "<button type='submit' class='dropdown-item'><i class='bx bx-edit-alt me-1'></i>Edit</button>";
+                $view .= "</form>";
+
+                $view .= "<form action='http://localhost/gs_code/gs_kadai10/acts/user_delete_act.php' method='post'>";
                 $view .= "<input type='hidden' name='userId' id='userId' value=" . h($result['user_id']) . ">";
-                $view .= "<button type='submit' class='btn btn-danger'>削除</button>";
-                $view .= "</form></td>";
+                $view .= "<button type='submit' class='dropdown-item'><i class='bx bx-trash me-1'></i>Delete</button>";
+                $view .= "</form>";
+                $view .= "</div>";
+                $view .= "</div>";
+                $view .= "</td>";
                 $i++;
             }
             return $view;
@@ -195,16 +331,29 @@
                 $view .= "<td>" . h($result['tenant_id']) . "</td>";
                 $view .= "<td>" . h($result['tenant_name']) . "</td>";
 
-                $view .= "<td><form action='http://localhost/gs_code/gs_kadai10/tenant_update.php' method='post'>";
-                $view .= "<input type='hidden' name='tenantId' id='tenantId' value=" . h($result['tenant_id']) . ">";
-                $view .= "<input type='hidden' name='tenantName' id='tenantName' value=" . h($result['tenant_name']) . ">";
-                $view .= "<button type='submit' class='btn btn-warning'>更新</button>";
-                $view .= "</form></td>";
+                $view .= "<td>";
+                $view .= "<div class='dropdown'>";
+                $view .= "<button type='button' class='btn p-0 dropdown-toggle hide-arrow'";
+                $view .= "data-bs-toggle='dropdown'>";
+                $view .= "<i class='bx bx-dots-vertical-rounded'></i>";
+                $view .= "</button>";
 
-                $view .= "<td><form action='http://localhost/gs_code/gs_kadai10/acts/tenant_delete_act.php' method='post'>";
-                $view .= "<input type='hidden' name='tenantId' id='tenantId' value=" . h($result['tenant_id']) . ">";
-                $view .= "<button type='submit' class='btn btn-danger'>削除</button>";
-                $view .= "</form></td>";
+                $view .= "<div class='dropdown-menu'>";
+
+                $view .= "<form action='http://localhost/gs_code/gs_kadai10/tenant_update.php' method='post'>";
+                $view .= "<input type='hidden' name='tenantId' id='tenantId' value='" . h($result['tenant_id']) . "'>";
+                $view .= "<input type='hidden' name='tenantName' id='tenantName' value='" . h($result['tenant_name']) . "'>";
+                $view .= "<button type='submit' class='dropdown-item'><i class='bx bx-edit-alt me-1'></i>Edit</button>";
+                $view .= "</form>";
+
+                $view .= "<form action='http://localhost/gs_code/gs_kadai10/acts/tenant_delete_act.php' method='post'>";
+                $view .= "<input type='hidden' name='tenantId' id='tenantId' value='" . h($result['tenant_id']) . "'>";
+                $view .= "<input type='hidden' name='tenantName' id='tenantName' value='" . h($result['tenant_name']) . "'>";
+                $view .= "<button type='submit' class='dropdown-item'><i class='bx bx-trash me-1'></i>Delete</button>";
+                $view .= "</form>";
+                $view .= "</div>";
+                $view .= "</div>";
+                $view .= "</td>";
                 $i++;
             }
             return $view;
@@ -231,7 +380,7 @@
                 JOIN tenants ON daily_reports.tenant_id = tenants.tenant_id
                 JOIN users ON daily_reports.user_id = users.user_id
                 WHERE daily_reports.tenant_id = :tenantId");
-            $stmt->bindValue(':tenantId', $tenantId, PDO::PARAM_STR);
+            $stmt->bindValue(':tenantId', $_SESSION['tenantId'], PDO::PARAM_STR);
         }
         
         $status = $stmt->execute();
@@ -247,22 +396,35 @@
                 $view .= "<td>" . h($result['tenant_name']) . "</td>";
                 $view .= "<td>" . h($result['user_name']) . "</td>";
                 $view .= "<td>" . h($result['date']) . "</td>";
-                $view .= "<td>" . substr(h($result['report']), 0, 12) . "</td>";
+                $view .= "<td>" . mb_substr(h($result['report']), 0, 12) . "</td>";
 
-                $view .= "<td><form action='http://localhost/gs_code/gs_kadai10/report_update.php' method='post'>";
-                $view .= "<input type='hidden' name='tenantId' id='tenantId' value=" . h($result['tenant_id']) . ">";
-                $view .= "<input type='hidden' name='userId' id='userId' value=" . h($result['user_id']) . ">";
-                $view .= "<input type='hidden' name='date' id='date' value=" . h($result['date']) . ">";
-                $view .= "<input type='hidden' name='report' id='report' value=" . h(escape_nl($result['report'])) . ">";
-                $view .= "<button type='submit' class='btn btn-warning'>更新</button>";
-                $view .= "</form></td>";
+                $view .= "<td>";
+                $view .= "<div class='dropdown'>";
+                $view .= "<button type='button' class='btn p-0 dropdown-toggle hide-arrow'";
+                $view .= "data-bs-toggle='dropdown'>";
+                $view .= "<i class='bx bx-dots-vertical-rounded'></i>";
+                $view .= "</button>";
 
-                $view .= "<td><form action='http://localhost/gs_code/gs_kadai10/acts/report_delete_act.php' method='post'>";
-                $view .= "<input type='hidden' name='tenantId' id='tenantId' value=" . h($result['tenant_id']) . ">";
-                $view .= "<input type='hidden' name='userId' id='userId' value=" . h($result['user_id']) . ">";
-                $view .= "<input type='hidden' name='date' id='date' value=" . h($result['date']) . ">";
-                $view .= "<button type='submit' class='btn btn-danger'>削除</button>";
-                $view .= "</form></td>";
+                $view .= "<div class='dropdown-menu'>";
+
+                $view .= "<form action='http://localhost/gs_code/gs_kadai10/report_update.php' method='post'>";
+                $view .= "<input type='hidden' name='tenantId' id='tenantId' value='" . h($result['tenant_id']) . "'>";
+                $view .= "<input type='hidden' name='userId' id='userId' value='" . h($result['user_id']) . "'>";
+                $view .= "<input type='hidden' name='date' id='date' value='" . h($result['date']) . "'>";
+                $view .= "<input type='hidden' name='report' id='report' value='" . h(escape_nl($result['report'])) . "'>";
+                $view .= "<button type='submit' class='dropdown-item'><i class='bx bx-edit-alt me-1'></i>Edit</button>";
+                $view .= "</form>";
+
+                $view .= "<form action='http://localhost/gs_code/gs_kadai10/acts/report_delete_act.php' method='post'>";
+                $view .= "<input type='hidden' name='tenantId' id='tenantId' value='" . h($result['tenant_id']) . "'>";
+                $view .= "<input type='hidden' name='userId' id='userId' value='" . h($result['user_id']) . "'>";
+                $view .= "<input type='hidden' name='date' id='date' value='" . h($result['date']) . "'>";
+                $view .= "<button type='submit' class='dropdown-item'><i class='bx bx-trash me-1'></i>Delete</button>";
+                $view .= "</form>";
+                $view .= "</div>";
+                $view .= "</div>";
+                $view .= "</td>";
+                
                 $i++;
             }
             return $view;

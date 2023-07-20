@@ -11,4 +11,8 @@
     $date = !empty($_POST['date']) ? $_POST['date'] : (!empty($original['date']) ? $original['date'] : "");
     $report = !empty($_POST['report']) ? unescape_nl($_POST['report']) : (!empty($original['report']) ? $original['report'] : "");
 
+    $userName = $_SESSION['userName'];
+    $roleName = $_SESSION['roleName'];
+    $navView = getNavigationMenu('SalesManagement', 'ReportUpdate');
+
     require_once('./templates/report_update.php');
