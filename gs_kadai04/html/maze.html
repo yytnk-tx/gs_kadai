@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="icon" href="../img/dot_illust_kaseijin_red.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+
+    <title>Cosmic Treasure Hunter</title>
+</head>
+
+<body>
+    <div id="stars1"></div>
+    <div id="stars2"></div>
+
+    <header>
+        Cosmic Treasure Hunter
+    </header>
+
+    <main>
+        <div id="screen">
+            <div id="screen-main">
+                <h1>Treasure Map</h1>
+                <div class="game-panel-padding">
+                    <div class="game-panel-padding">
+                        <h2>じゃんけんに勝って、お宝を集めつつゴールを目指そう！</h2>
+                    </div>
+                    <div id="maze"></div>
+                </div>
+
+                <div id="usage-guide-panel" class="game-panel-padding">
+                    <div class="usage-guide-content">
+                        <img src="../img/dot_illust_kaseijin_red.png" alt="火星人の画像" class="usage-guide-img">
+                        <span>：You</span>
+                    </div>
+
+                    <div class="usage-guide-content">
+                        <img src="../img/dot_illust_treasure_bronze.png" alt="宝箱の画像" class="usage-guide-img">
+                        <span>：Treasure</span>
+                    </div>
+
+                    <div class="usage-guide-content">
+                        <img src="../img/dot_illust_object_jupiter.png" alt="惑星の画像" class="usage-guide-img">
+                        <span>：Goal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="screen-secondary">
+                <h1>Information</h1>
+                <div class="game-panel-padding">
+                    <h2>オッズ</h2>
+                    <div class="game-panel-padding">
+                        <table class="game-panel-odds-table">
+                            <tr>
+                                <th>グー</th>
+                                <td class="rock-odds"></td>
+                            </tr>
+                            <tr>
+                                <th>パー</th>
+                                <td class="paper-odds"></td>
+                            </tr>
+                            <tr>
+                                <th>チョキ</th>
+                                <td class="scissors-odds"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                    <h2>じゃんけん</h2>
+                    <div class="game-panel-padding">
+                        <h3>あなたの戦略</h3>
+                        <div class="game-panel-padding">
+                            <!-- <input type="image" src="./img/janken_rock.png" alt="じゃんけんのグーの画像"
+                                class="game-panel-janken-player-rock janken-img">
+                            <input type="image" src="./img/janken_paper.png" alt="じゃんけんのパーの画像"
+                                class="game-panel-janken-player-paper janken-img">
+                            <input type="image" src="./img/janken_scissors.png" alt="じゃんけんのチョキの画像"
+                                class="game-panel-janken-player-scissors janken-img"> -->
+
+                            <input type="image" src="../img/dot_illust_iwa_01.png" alt="じゃんけんのグーの画像"
+                                class="game-panel-janken-player-rock janken-img">
+                            <input type="image" src="../img/dot_illust_paper_looseleaf_02.png" alt="じゃんけんのパーの画像"
+                                class="game-panel-janken-player-paper janken-img">
+                            <input type="image" src="../img/dot_illust_hasami.png" alt="じゃんけんのチョキの画像"
+                                class="game-panel-janken-player-scissors janken-img">
+                        </div>
+                    </div>
+
+                    <div class="game-panel-padding">
+                        <h3>相手の戦略</h3>
+                        <div class="game-panel-padding">
+                            <!-- <input type="image" src="./img/janken_rock.png" alt="じゃんけんのグーの画像"
+                                class="game-panel-janken-cpu-rock janken-img">
+                            <input type="image" src="./img/janken_paper.png" alt="じゃんけんのパーの画像"
+                                class="game-panel-janken-cpu-paper janken-img">
+                            <input type="image" src="./img/janken_scissors.png" alt="じゃんけんのチョキの画像"
+                                class="game-panel-janken-cpu-scissors janken-img"> -->
+
+                            <input type="image" src="../img/dot_illust_iwa_01.png" alt="じゃんけんのグーの画像"
+                                class="game-panel-janken-cpu-rock janken-img">
+                            <input type="image" src="../img/dot_illust_paper_looseleaf_02.png" alt="じゃんけんのパーの画像"
+                                class="game-panel-janken-cpu-paper janken-img">
+                            <input type="image" src="../img/dot_illust_hasami.png" alt="じゃんけんのチョキの画像"
+                                class="game-panel-janken-cpu-scissors janken-img">
+                        </div>
+                    </div>
+
+                    <div class="game-panel-count">
+                        <div class="game-panel-padding">
+                            <h3>残歩数</h3>
+                            <div class="game-panel-padding">
+                                <p class="steps-count">0</p>
+                            </div>
+                        </div>
+
+                        <div class="game-panel-padding">
+                            <h3>じゃんけん数</h3>
+                            <div class="game-panel-padding">
+                                <p class="janken-count">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>集めたお宝</h2>
+                    <div class="game-panel-padding">
+                        <table class="game-panel-treasure-table">
+                            <tr>
+                                <td><img src="../img/dot_illust_treasure_bronze.png" alt="宝箱の画像"
+                                        class="game-panel-treasure"></td>
+                                <td class="treasure-count">0</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- <h2>移動</h2>
+                    <div class="game-panel-padding">
+                        <table>
+                            <tr>
+                                <td></td>
+                                <td><button class="moveButton" id="moveUpButton">↑</button></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><button class="moveButton" id="moveLeftButton">←</button></td>
+                                <td></td>
+                                <td><button class="moveButton" id="moveRightButton">→</button></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><button class="moveButton" id="moveDownButton">↓</button></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <small>&copy; 2023 Yuya Tanaka</small>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/janken.js"></script>
+    <script src="../js/maze.js"></script>
+    <script src="../js/game.js"></script>
+    <script>
+        window.onload = function () {
+            if(localStorage.length > 0) {
+                load();
+            } else {
+                init();
+            }
+        }
+    </script>
+</body>
+
+</html>
